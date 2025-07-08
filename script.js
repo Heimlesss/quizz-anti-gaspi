@@ -1,7 +1,7 @@
 const questions = [
   {
     text: "On peut manger un yaourt même après sa date de durabilité minimale (DDM).",
-    image: "images/yaourt.png",
+    image: "images/yaourt_pot.png",
     answer: true,
     explanation: "La DDM est une date indicative. Le produit est souvent encore bon après."
   },
@@ -55,7 +55,7 @@ const questions = [
   },
   {
     text: "Une tomate un peu molle est encore bonne à manger.",
-    image: "images/pomme_coupee.png",
+    image: "images/tomate_molle.png",
     answer: true,
     explanation: "Elle peut être cuisinée sans problème."
   },
@@ -124,7 +124,7 @@ const questions = [
 
 let currentIndex = 0;
 let score = 0;
-let timer = 60;
+let timer = 180;
 let interval;
 let shuffledQuestions = [];
 
