@@ -1,7 +1,7 @@
-const questions = [
+const questions = [ 
   {
     text: "On peut manger un yaourt même après sa date de durabilité minimale (DDM).",
-    image: "images/yaourt.png",
+    image: "images/yaourt_pot.png",
     answer: true,
     explanation: "La DDM est une date indicative. Le produit est souvent encore bon après."
   },
@@ -55,7 +55,7 @@ const questions = [
   },
   {
     text: "Une tomate un peu molle est encore bonne à manger.",
-    image: "images/pomme_coupee.png",
+    image: "images/tomate_molle.png",
     answer: true,
     explanation: "Elle peut être cuisinée sans problème."
   },
@@ -91,7 +91,7 @@ const questions = [
   },
   {
     text: "Il est dangereux de consommer un fromage à croûte dure après sa date.",
-    image: "images/yaourt.png",
+    image: "images/fromage.png",
     answer: false,
     explanation: "S’il n’a pas de moisissure anormale, il est encore bon."
   },
@@ -120,35 +120,28 @@ const questions = [
     explanation: "Dans certains pays, ce n’est pas nécessaire selon conservation initiale."
   }
 ];
-
-
 let currentIndex = 0;
 let score = 0;
 let timer = 30;
 let interval;
 let shuffledQuestions = [];
 
-
 function startQuiz() {
-  document.getElementById("bg-music").play();
-  document.getElementById("bg-music").play();
-
   document.getElementById("welcome-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.remove("hidden");
 
   shuffledQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, 10);
   score = 0;
-  timer = 60;
+  timer = 30;
   currentIndex = 0;
   document.getElementById("score").textContent = "Score : 0";
-  document.getElementById("timer").textContent = "Temps : 60 s";
+  document.getElementById("timer").textContent = "Temps : 30 s";
   document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
 
-  
   interval = setInterval(() => {
     timer--;
-    document.getElementById("timer").textContent = `Temps : ${timer} s`;
+    document.getElementById("timer").textContent = Temps : ${timer} s;
     if (timer <= 0) {
       currentIndex++;
       if (currentIndex < 10) {
@@ -159,7 +152,6 @@ function startQuiz() {
       }
     }
   }, 1000);
-
 }
 
 function showQuestion() {
@@ -168,33 +160,27 @@ function showQuestion() {
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
   document.getElementById("next-btn").classList.add("hidden");
+  document.getElementById("timer").textContent = Temps : ${timer} s;
 }
 
-
 function answer(userAnswer) {
-  document.getElementById("click-sound").play();
-  document.getElementById("click-sound").play();
-
   const q = shuffledQuestions[currentIndex];
   if (userAnswer === q.answer) {
     score++;
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "green";
-    document.getElementById("correct-sound").play();
-    document.getElementById("correct-sound").play();
   } else {
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "red";
-    document.getElementById("wrong-sound").play();
-    document.getElementById("wrong-sound").play();
   }
-  document.getElementById("score").textContent = `Score : ${score}`;
+  document.getElementById("score").textContent = Score : ${score};
   document.getElementById("next-btn").classList.remove("hidden");
 }
 
 function nextQuestion() {
   currentIndex++;
   if (currentIndex < 10) {
+    timer = 30;
     showQuestion();
   } else {
     endQuiz();
@@ -205,7 +191,7 @@ function endQuiz() {
   clearInterval(interval);
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("end-screen").classList.remove("hidden");
-  document.getElementById("final-score").textContent = `Votre score : ${score} / 10`;
+  document.getElementById("final-score").textContent = Votre score : ${score} / 10;
 
   let message = "";
   if (score === 10) {
