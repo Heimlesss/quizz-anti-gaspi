@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Anti-Gaspi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+  <div id="welcome-screen" class="screen">
+    <h1>Quiz Anti-Gaspi</h1>
+    <img src="images/yaourt.png" alt="Intro" class="intro-img">
+    <p>Testez vos connaissances sur le gaspillage alimentaire !</p>
+    <button onclick="startQuiz()">Commencer le quiz</button>
+  </div>
+
+  <div id="quiz-screen" class="screen hidden">
+    <div id="timer">Temps : 60 s</div>
+    <div id="question-container">
+      <p id="question-text"></p>
+      <img id="question-image" src="" alt="illustration">
+      <div class="buttons">
+        <button onclick="answer(true)">VRAI</button>
+        <button onclick="answer(false)">FAUX</button>
+      </div>
+      <div id="feedback"></div>
+    </div>
+    <div id="score">Score : 0</div>
+  </div>
+
+  <div id="end-screen" class="screen hidden">
+    <h2>Quiz terminé !</h2>
+    <p id="final-score"></p>
+    <button onclick="restartQuiz()">Recommencer</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
