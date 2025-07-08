@@ -119,45 +119,36 @@ const questions = [
     answer: false,
     explanation: "Dans certains pays, ce n’est pas nécessaire selon conservation initiale."
   }
-];
-let currentIndex = 0;
+];let currentIndex = 0;
 let score = 0;
 let timer = 30;
-let interval;
+let questionInterval;
 let shuffledQuestions = [];
 
-
 function startQuiz() {
-  document.getElementById("bg-music").play();
-  document.getElementById("bg-music").play();
-
   document.getElementById("welcome-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.remove("hidden");
 
   shuffledQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, 10);
   score = 0;
-  timer = 30;
   currentIndex = 0;
   document.getElementById("score").textContent = "Score : 0";
-  document.getElementById("timer").textContent = "Temps : 30 s";
-  document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
+}
 
-  
-  interval = setInterval(() => {
+function startTimer() {
+  timer = 30;
+  document.getElementById("timer").textContent = `Temps : ${timer} s`;
+
+  clearInterval(questionInterval);
+  questionInterval = setInterval(() => {
     timer--;
     document.getElementById("timer").textContent = `Temps : ${timer} s`;
     if (timer <= 0) {
-      currentIndex++;
-      if (currentIndex < 10) {
-        showQuestion();
-        timer = 30;
-      } else {
-        endQuiz();
-      }
+      clearInterval(questionInterval);
+      nextQuestion();
     }
   }, 1000);
-
 }
 
 function showQuestion() {
@@ -166,25 +157,20 @@ function showQuestion() {
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
   document.getElementById("next-btn").classList.add("hidden");
+  startTimer();
 }
 
-
 function answer(userAnswer) {
-  document.getElementById("click-sound").play();
-  document.getElementById("click-sound").play();
+  clearInterval(questionInterval);
 
   const q = shuffledQuestions[currentIndex];
   if (userAnswer === q.answer) {
     score++;
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "green";
-    document.getElementById("correct-sound").play();
-    document.getElementById("correct-sound").play();
   } else {
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "red";
-    document.getElementById("wrong-sound").play();
-    document.getElementById("wrong-sound").play();
   }
   document.getElementById("score").textContent = `Score : ${score}`;
   document.getElementById("next-btn").classList.remove("hidden");
@@ -200,7 +186,7 @@ function nextQuestion() {
 }
 
 function endQuiz() {
-  clearInterval(interval);
+  clearInterval(questionInterval);
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("end-screen").classList.remove("hidden");
   document.getElementById("final-score").textContent = `Votre score : ${score} / 10`;
