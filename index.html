@@ -25,6 +25,7 @@
         <button onclick="answer(false)">FAUX</button>
       </div>
       <div id="feedback"></div>
+      <button id="next-btn" class="hidden" onclick="nextQuestion()">Suivant</button>
     </div>
     <div id="score">Score : 0</div>
   </div>
@@ -32,6 +33,7 @@
   <div id="end-screen" class="screen hidden">
     <h2>Quiz terminé !</h2>
     <p id="final-score"></p>
+    <p id="final-message"></p>
     <button onclick="restartQuiz()">Recommencer</button>
   </div>
 

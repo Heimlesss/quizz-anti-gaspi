@@ -138,6 +138,7 @@ function startQuiz() {
   currentIndex = 0;
   document.getElementById("score").textContent = "Score : 0";
   document.getElementById("timer").textContent = "Temps : 60 s";
+  document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
 
   interval = setInterval(() => {
@@ -154,6 +155,7 @@ function showQuestion() {
   document.getElementById("question-text").textContent = q.text;
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
+  document.getElementById("next-btn").classList.add("hidden");
 }
 
 function answer(userAnswer) {
@@ -167,14 +169,16 @@ function answer(userAnswer) {
     document.getElementById("feedback").style.color = "red";
   }
   document.getElementById("score").textContent = `Score : ${score}`;
+  document.getElementById("next-btn").classList.remove("hidden");
+}
+
+function nextQuestion() {
   currentIndex++;
-  setTimeout(() => {
-    if (currentIndex < 10) {
-      showQuestion();
-    } else {
-      endQuiz();
-    }
-  }, 1500);
+  if (currentIndex < 10) {
+    showQuestion();
+  } else {
+    endQuiz();
+  }
 }
 
 function endQuiz() {
@@ -182,6 +186,19 @@ function endQuiz() {
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("end-screen").classList.remove("hidden");
   document.getElementById("final-score").textContent = `Votre score : ${score} / 10`;
+
+  let message = "";
+  if (score === 10) {
+    message = "🎉 Parfait ! Vous êtes un vrai champion du zéro gaspi !";
+  } else if (score >= 8) {
+    message = "🍞 Bravo, votre bon sens anti-gaspi fait la différence !";
+  } else if (score >= 5) {
+    message = "😊 Pas mal, vous êtes sur la bonne voie.";
+  } else {
+    message = "💡 C'est le moment de découvrir comment éviter le gaspillage alimentaire.";
+  }
+
+  document.getElementById("final-message").textContent = message;
 }
 
 function restartQuiz() {
