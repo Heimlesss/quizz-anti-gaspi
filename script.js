@@ -132,14 +132,13 @@ function startQuiz() {
 
   shuffledQuestions = questions.sort(() => 0.5 - Math.random()).slice(0, 10);
   score = 0;
-  timer = 60;
+  timer = 30;
   currentIndex = 0;
   document.getElementById("score").textContent = "Score : 0";
-  document.getElementById("timer").textContent = "Temps : 60 s";
+  document.getElementById("timer").textContent = "Temps : 30 s";
   document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
 
-  
   interval = setInterval(() => {
     timer--;
     document.getElementById("timer").textContent = `Temps : ${timer} s`;
@@ -153,7 +152,6 @@ function startQuiz() {
       }
     }
   }, 1000);
-
 }
 
 function showQuestion() {
@@ -162,6 +160,7 @@ function showQuestion() {
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
   document.getElementById("next-btn").classList.add("hidden");
+  document.getElementById("timer").textContent = `Temps : ${timer} s`;
 }
 
 function answer(userAnswer) {
@@ -181,6 +180,7 @@ function answer(userAnswer) {
 function nextQuestion() {
   currentIndex++;
   if (currentIndex < 10) {
+    timer = 30;
     showQuestion();
   } else {
     endQuiz();
