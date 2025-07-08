@@ -10,7 +10,7 @@
 <body>
   <div id="welcome-screen" class="screen">
     <div class="intro-container">
-      <img src="images/accueil_quizz.png" alt="Accueil" class="intro-full-img">
+      <img src="images/accueil_quizz_sans_bouton.png" alt="Accueil" class="intro-full-img">
       <button class="start-btn" onclick="startQuiz()">Commencer le quiz</button>
     </div>
   </div>
@@ -38,5 +38,10 @@
   </div>
 
   <script src="script.js"></script>
+
+  <audio id="bg-music" src="sounds/background.mp3" loop></audio>
+  <audio id="click-sound" src="sounds/click.mp3"></audio>
+  <audio id="correct-sound" src="sounds/correct.mp3"></audio>
+  <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
 </body>
 </html>

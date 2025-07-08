@@ -10,9 +10,32 @@ body {
 .hidden {
   display: none;
 }
-.intro-img {
-  width: 120px;
-  margin: 20px auto;
+.intro-container {
+  position: relative;
+  display: inline-block;
+  width: 90%;
+  max-width: 800px;
+}
+.intro-full-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.start-btn {
+  background-color: #FFA726;
+  transition: all 0.3s ease;
+
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
 }
 #question-image {
   width: 120px;
@@ -40,4 +63,11 @@ button:last-child {
 #timer, #score, #feedback {
   font-size: 1.2em;
   margin-top: 10px;
+}
+
+
+.start-btn:hover {
+  background-color: #FB8C00;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateX(-50%) scale(1.05);
 }
