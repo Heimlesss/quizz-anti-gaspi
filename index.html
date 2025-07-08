@@ -9,14 +9,14 @@
 </head>
 <body>
   <div id="welcome-screen" class="screen">
-    <h1>Quiz Anti-Gaspi</h1>
-    <img src="images/yaourt.png" alt="Intro" class="intro-img">
-    <p>Testez vos connaissances sur le gaspillage alimentaire !</p>
-    <button onclick="startQuiz()">Commencer le quiz</button>
+    <div class="intro-container">
+      <img src="images/accueil_quizz.png" alt="Accueil" class="intro-full-img">
+      <button class="start-btn" onclick="startQuiz()">Commencer le quiz</button>
+    </div>
   </div>
 
   <div id="quiz-screen" class="screen hidden">
-    <div id="timer">Temps : 60 s</div>
+    <div id="timer">Temps : 30 s</div>
     <div id="question-container">
       <p id="question-text"></p>
       <img id="question-image" src="" alt="illustration">
