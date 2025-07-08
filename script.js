@@ -141,7 +141,7 @@ function startQuiz() {
 
   interval = setInterval(() => {
     timer--;
-    document.getElementById("timer").textContent = Temps : ${timer} s;
+    document.getElementById("timer").textContent = `Temps : ${timer} s`;
     if (timer <= 0) {
       currentIndex++;
       if (currentIndex < 10) {
@@ -160,7 +160,7 @@ function showQuestion() {
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
   document.getElementById("next-btn").classList.add("hidden");
-  document.getElementById("timer").textContent = Temps : ${timer} s;
+  document.getElementById("timer").textContent = `Temps : ${timer} s`;
 }
 
 function answer(userAnswer) {
@@ -173,7 +173,7 @@ function answer(userAnswer) {
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "red";
   }
-  document.getElementById("score").textContent = Score : ${score};
+  document.getElementById("score").textContent = `Score : ${score}`;
   document.getElementById("next-btn").classList.remove("hidden");
 }
 
@@ -191,7 +191,7 @@ function endQuiz() {
   clearInterval(interval);
   document.getElementById("quiz-screen").classList.add("hidden");
   document.getElementById("end-screen").classList.remove("hidden");
-  document.getElementById("final-score").textContent = Votre score : ${score} / 10;
+  document.getElementById("final-score").textContent = `Votre score : ${score} / 10`;
 
   let message = "";
   if (score === 10) {
