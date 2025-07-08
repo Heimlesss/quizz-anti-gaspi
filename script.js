@@ -120,11 +120,9 @@ const questions = [
     explanation: "Dans certains pays, ce n’est pas nécessaire selon conservation initiale."
   }
 ];
-
-
 let currentIndex = 0;
 let score = 0;
-let timer = 180;
+let timer = 30;
 let interval;
 let shuffledQuestions = [];
 
@@ -141,13 +139,21 @@ function startQuiz() {
   document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
 
+  
   interval = setInterval(() => {
     timer--;
     document.getElementById("timer").textContent = `Temps : ${timer} s`;
-    if (timer <= 0 || currentIndex >= 10) {
-      endQuiz();
+    if (timer <= 0) {
+      currentIndex++;
+      if (currentIndex < 10) {
+        showQuestion();
+        timer = 30;
+      } else {
+        endQuiz();
+      }
     }
   }, 1000);
+
 }
 
 function showQuestion() {
