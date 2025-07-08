@@ -91,7 +91,7 @@ const questions = [
   },
   {
     text: "Il est dangereux de consommer un fromage à croûte dure après sa date.",
-    image: "images/yaourt.png",
+    image: "images/fromage.png",
     answer: false,
     explanation: "S’il n’a pas de moisissure anormale, il est encore bon."
   },
