@@ -126,7 +126,11 @@ let timer = 30;
 let interval;
 let shuffledQuestions = [];
 
+
 function startQuiz() {
+  document.getElementById("bg-music").play();
+  document.getElementById("bg-music").play();
+
   document.getElementById("welcome-screen").classList.add("hidden");
   document.getElementById("quiz-screen").classList.remove("hidden");
 
@@ -139,6 +143,7 @@ function startQuiz() {
   document.getElementById("next-btn").classList.add("hidden");
   showQuestion();
 
+  
   interval = setInterval(() => {
     timer--;
     document.getElementById("timer").textContent = `Temps : ${timer} s`;
@@ -152,6 +157,7 @@ function startQuiz() {
       }
     }
   }, 1000);
+
 }
 
 function showQuestion() {
@@ -160,18 +166,25 @@ function showQuestion() {
   document.getElementById("question-image").src = q.image;
   document.getElementById("feedback").textContent = "";
   document.getElementById("next-btn").classList.add("hidden");
-  document.getElementById("timer").textContent = `Temps : ${timer} s`;
 }
 
+
 function answer(userAnswer) {
+  document.getElementById("click-sound").play();
+  document.getElementById("click-sound").play();
+
   const q = shuffledQuestions[currentIndex];
   if (userAnswer === q.answer) {
     score++;
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "green";
+    document.getElementById("correct-sound").play();
+    document.getElementById("correct-sound").play();
   } else {
     document.getElementById("feedback").textContent = q.explanation;
     document.getElementById("feedback").style.color = "red";
+    document.getElementById("wrong-sound").play();
+    document.getElementById("wrong-sound").play();
   }
   document.getElementById("score").textContent = `Score : ${score}`;
   document.getElementById("next-btn").classList.remove("hidden");
@@ -180,7 +193,6 @@ function answer(userAnswer) {
 function nextQuestion() {
   currentIndex++;
   if (currentIndex < 10) {
-    timer = 30;
     showQuestion();
   } else {
     endQuiz();
